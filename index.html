@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Pimpwasen Essensbestellung</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-180.png" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand" title="Zur Startseite (Reset)">
+      <img class="brand__icon" src="assets/icons/icon-96.png" alt="Pimpwasen Essensbestellung" />
+      <div class="brand__text">
+        <div class="brand__title">Pimpwasen Essensbestellung</div>
+        <div class="brand__subtitle">Gönn dir, Brudi!</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <label class="search">
+        <span class="search__icon">⌕</span>
+        <input id="search" type="search" placeholder="Suchen…" autocomplete="off" />
+      </label>
+
+      <label class="toggle chip">
+        <input id="openToday" type="checkbox" />
+        <span class="chip__text">Heute geöffnet</span>
+        <span class="chip__count" id="countOpenToday">0</span>
+      </label>
+
+      <label class="toggle chip">
+        <input id="openNow" type="checkbox" />
+        <span class="chip__text">Jetzt geöffnet</span>
+        <span class="chip__count" id="countOpenNow">0</span>
+      </label>
+
+      <label class="toggle chip">
+        <input id="hasLunch" type="checkbox" />
+        <span class="chip__text">Mittagstisch</span>
+        <span class="chip__count" id="countHasLunch">0</span>
+      </label>
+
+      <label class="toggle chip">
+        <input id="deliveryOnly" type="checkbox" />
+        <span class="chip__text">Lieferung</span>
+        <span class="chip__count" id="countDelivery">0</span>
+      </label>
+
+      <label class="select">
+        <span class="select__label">Küche</span>
+        <select id="cuisineFilter" aria-label="Küche filtern">
+          <option value="">Alle</option>
+        </select>
+      </label>
+
+      <label class="select">
+        <span class="select__label">Ort</span>
+        <select id="locationFilter" aria-label="Ort filtern">
+          <option value="">Alle</option>
+        </select>
+      </label>
+
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="grid" class="grid" aria-live="polite"></section>
+  </main>
+
+  <dialog id="modal" class="modal">
+    <form method="dialog" class="modal__sheet">
+      <div class="modal__head">
+        <div>
+          <div id="mTitle" class="modal__title"></div>
+          <div id="mMeta" class="modal__meta"></div>
+        </div>
+        <button class="btn btn--ghost" value="close" aria-label="Schließen">✕</button>
+      </div>
+
+      <div class="modal__body">
+        <div class="pillrow" id="mPills"></div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="card__title">Kontakt</div>
+            <div class="card__content" id="mContact"></div>
+          </div>
+
+          <div class="card" id="lunchCard">
+            <div class="card__title">Mittagstisch</div>
+            <div class="card__content" id="mLunch"></div>
+          </div>
+
+          <div class="card" id="menuCard">
+            <div class="card__title">Speisekarte</div>
+            <div class="card__content" id="mMenu"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal__foot">
+        <button class="btn" value="close">Schließen</button>
+      </div>
+    </form>
+  </dialog>
+
+  <button id="toTop" class="toTop" aria-label="Nach oben">↑</button>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
